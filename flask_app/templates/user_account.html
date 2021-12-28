@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>user_account</title>
+</head>
+<body>
+    <div class="dash_container" style="background-image: url({{url_for('static', filename=
+    'img/Colorado-2BTDGF1-2.jpg')}});">
+        <div class="dash_top_nav" >
+            <h1 style="color: white;">My Meets</h1>
+            <h2 class="dash-tags"><a style="color: white;" href="/dashboard">Home Page</a></h2>
+            <h3 class="dash-tags"><a style="color: white;" href="/logout">Logout</a></h3>
+            <table class="my_meets_table">
+                <h2 style="text-align: left; padding-left: 20px; padding-bottom: 50px;">My Meets</h2>
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                {% for meet in meets%}
+                <tbody>
+                    <tr>
+                        {% if meet.user_id == user.id%}
+                        <th class="table1">{{meet.location}}</th>
+                        {% endif %}
+                        {% if meet.user_id == user.id%}
+                        <th class="table1">{{meet.description}}</th>
+                        {% endif %}
+                        {% if meet.user_id == user.id%}
+                        <th class="table1">{{meet.date}}</th>
+                        {% endif %}
+                        <th class="table1">
+                            {% if meet.user_id == user.id%}
+                            <a href="/edit_meet/{{meet.id}}"> Edit |</a>
+                            {% endif %}
+                            {% if meet.user_id == user.id%}
+                            <a href="/delete/{{meet.id}}"> Delete</a></th>
+                            {% endif %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

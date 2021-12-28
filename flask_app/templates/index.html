@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="subie_pic" style="background-image: url({{url_for('static', filename=
+    'img/2018_subaru_wrx_sedan_sti-limited_fq_oem_1_1600.jpg')}});">
+            <div class="top_nav_reg">
+                <h1 class="header">Los Angeles Subaru Owners</h1>
+            </div>
+        <div class="container">
+            <div class="register" style="background-color: black; opacity: 0.55; height: 400px;">
+                <form action="/register" method="POST">
+                <legend class="legends" style="color: white;">Register</legend>
+                <input class="login_input" type="text" name="first_name" placeholder="First Name">
+                {% for error in get_flashed_messages(category_filter=["first_name"]) %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endfor %}
+                <input class="login_input" type="text" name="last_name" placeholder="Last Name">
+                {% for error in get_flashed_messages(category_filter=["last_name"]) %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endfor %}
+                <input class="login_input" type="text" name="email" placeholder="Email">
+                {% for error in get_flashed_messages(category_filter=["email"]) %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endfor %}
+                <input class="login_input" type="password" name="password" placeholder="Password">
+                {% for error in get_flashed_messages(category_filter=["password"]) %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endfor %}
+                <input class="login_input" type="password" name="confirm_password" placeholder="Confirm Password">
+                {% for error in get_flashed_messages(category_filter=["confirm_password"]) %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endfor %}
+                <button class="longin_but">Register</button>
+                </form>
+            </div>
+            <div class="login" style="background-color: black; opacity: 0.55; height: 230px;">
+                <form action="/login" method="POST">
+                    <legend class="legends" style="color: white;">Login</legend>
+                    <input class="login_input" type="text" name="login_email" placeholder="Email">
+                    <input class="login_input" type="password" name="login_password" placeholder="Password">
+                    {% for error in get_flashed_messages(category_filter=["login"]) %}
+                        <p class="alert alert-danger">{{error}}</p>
+                    {% endfor %}
+                    <button class="longin_but">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</html>

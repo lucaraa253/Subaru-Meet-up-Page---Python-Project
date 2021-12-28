@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>new_meet</title>
+</head>
+<body>
+    <div class="dash_container" style="background-image: url({{url_for('static', filename=
+    'img/546b30f0d8567_-_2015_subaru_wrxsti_042-lg.jpg')}});">
+        <div class="dash_top_nav" >
+            <h1 class="dash-tags" style="color: white;">Create Your Subie Meet</h1>
+            <h2 class="dash-tags"><a style="color: white;" href="/dashboard">Home Page</a></h2>
+            <h3 class="dash-tags"><a style="color: white;" href="/logout">Logout</a></h3>
+        </div>
+    <form action="/save_meet/{{session['id']}}" method="POST">
+        <div class="inputs" style="margin: 0 auto; background-color: black; opacity: 0.55; width: 640px;">
+            <input class="new_meet_form" type="text" name="location" placeholder="Location">
+            {% for error in get_flashed_messages(category_filter=["location"]) %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <input class="new_meet_form" type="text" name="description" placeholder="Description">
+            {% for error in get_flashed_messages(category_filter=["description"]) %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <input class="new_meet_form" type="date" name="date">
+            <input class="new_meet_form" type="submit" value="create meet">
+        </div>
+    </form>
+</body>
+</html>

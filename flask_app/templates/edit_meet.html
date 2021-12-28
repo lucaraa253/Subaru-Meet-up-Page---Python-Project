@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>edit_tree</title>
+</head>
+<body>
+    <div class="top_nav">
+        <h1>Arbortrary</h1>
+        <h3><a href="/user_account">My trees</a></h3>
+        <h1>Welcome {{ user.first_name}} {{user.last_name}}!</h1>
+    </div>
+    <div class="bottom_nav">
+        <h3>A site to track randomly planted trees</h3>
+        <h3>Plant a tree  <a href="/dashboard">Dashboard  </a><a href="/logout">Logout</a></h3>
+    </div>
+    
+    <form action="/update_tree/{{tree.id}}" method="POST">
+        <div class="inputs">
+            <label for="species">Species:</label>
+            <input value="{{tree.species}}" type="text" name="species">
+            {% for error in get_flashed_messages(category_filter=["species"]) %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <label for="location">Location:</label>
+            <input value="{{tree.location}}" type="text" name="location">
+            {% for error in get_flashed_messages(category_filter=["location"]) %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <label for="reason">Reason:</label>
+            <input value="{{tree.reason}}" type="text" name="reason">
+            {% for error in get_flashed_messages(category_filter=["reason"]) %}
+                <p class="alert alert-danger">{{error}}</p>
+            {% endfor %}
+            <label for="date_planted">Date Planted:</label>
+            <input value="{{tree.date_planted}}" type="date" name="date_planted">
+            <input type="submit" value="edit tree">
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="dash_container" style="background-image: url({{url_for('static', filename=
+    'img/s209-1571063968.jpg')}});">
+        <div class="dash_top_nav" >
+            <h1 style="color: rgb(18, 209, 168);" class="dash-tags">Welcome {{ user.first_name}} {{user.last_name}}!</h1>
+            <h3 class="dash-tags"><a style="color: rgb(18, 209, 168);" href="/user_account">My Meets</a></h3>
+            <h3 class="dash-tags"><a style="color: rgb(18, 209, 168);" href="/new_meet">New Meet</a></h3>
+            <h3 class="dash-tags"><a style="color: rgb(18, 209, 168);" href="/logout">Logout</a></h3>
+            <table class="cruise_table">
+                <h3 style= "margin-top: 80px; color: rgb(18, 209, 168); text-decoration: underline;">All Upcoming Meets</h3>
+                <thead>
+                    <tr>
+                        <th class="cruises1">Cruise Type</th>
+                        <th class="cruises1">Date</th>
+                        <th class="cruises1">Actions</th>
+                    </tr>
+                </thead>
+                {% for meet in meets%}
+                
+                <tbody>
+                    <tr>
+                        <th class="cruises1">{{meet.description}}</th>
+                        <th class="cruises1">{{meet.date}}</th>
+                        <th class="cruises1">
+                            <a style="color: rgb(18, 209, 168);" href="/show_meet/{{meet.id}}">Details</a></th>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>show_meet</title>
+</head>
+<body>
+    <div class="dash_container" style="background-image: url({{url_for('static', filename=
+    'img/replace-cover.jpeg')}});">
+        <div class="dash_top_nav" >
+            <h1 class="dash-tags"><a style="color: white;" href="/dashboard">Home Page</a></h1>
+            <h3 class="dash-tags"><a style="color: white;" href="/logout">Logout</a></h3>
+        </div>
+        <table style="color: white; font-size: 25px; background-color: black; margin: 0 auto; padding: 20px; opacity: 0.55; width: 640px;">
+            <thead>
+                <h3 style="color: white; font-size: 25px; background-color: black; margin: 0 auto; padding: 20px; opacity: 0.55; width: 600px; text-align: center;">Subie Meet</h3>
+                <tr>
+                    <td>Where:    </td>
+                    <td>    {{meet.description}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>When:    </td>
+                    <td>    {{meet.date}}</td>
+                </tr>
+                <tr>
+                    <td>Location:    </td>
+                    <td>    {{meet.location}}</td>
+                </tr>
+            </tbody>
+        </table>
+            <div id="map"></div>
+            <script src="{{url_for('static',filename='js/index.js')}}"></script>
+            <script async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBosQtV88Nh2aZa-yhjC11QZrj-jLVLd00&callback=initMap"
+            ></script>
+    </div>
+</body>
+</html>
